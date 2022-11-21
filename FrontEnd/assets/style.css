@@ -200,7 +200,7 @@ footer nav ul {
 	border: 1px solid #1D6154;
 	border-radius: 60px;
 	margin-right: 10px;
-
+	padding: 10px;
 	text-align: center;
 
 
@@ -208,4 +208,8 @@ footer nav ul {
 .btn-filter:hover{
 	background-color: #1D6154;
 	color: white;
+}
+
+a {
+	text-decoration: none;
 }

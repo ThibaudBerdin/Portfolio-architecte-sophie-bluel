@@ -9,8 +9,7 @@ fetch(lienAPI + "works")
     })
     .then(function (value) {
         let gallery = document.getElementById("gallery")
-
-
+        
         for (const e in value) {
 
             let figure = document.createElement('figure')
