@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    h2 {
+      font-size: 20px;
+      color: #000000;
+    }
+    #example {
+      visibility: hidden;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+<h2>Créer Boîte Modale</h2>
+<a href="#" onclick="example()">ouvrir</a>
+<div id="example">
+  <div>
+    <p>Le contenu que vous souhaitez voir voir va ici.</p>
+    <a href="#" onclick="example()">Cliquez ici pour fermer la boîte</a>
+  </div>
+  <script>
+    function example() {
+      const el = document.getElementById("example");
+      el.style.visibility = el.style.visibility === "visible" ? "hidden" : "visible";
+    }
+  </script>
+</div>
+</body>
+</html>
