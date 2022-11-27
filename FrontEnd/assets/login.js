@@ -127,3 +127,4 @@ function setCookie(name, value, expireDays) {
     document.cookie = name + "=" + value +
         ((expireDays==null) ? "" : ";expires="+exDate)
 }
+

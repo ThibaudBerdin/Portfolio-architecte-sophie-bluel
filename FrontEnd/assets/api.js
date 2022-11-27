@@ -38,8 +38,11 @@ let tableauProjets = fetch(lienAPI + "works")
         return value
     })
 
+/**
+ * TESTS
+ **/
 tableauProjets.then((value) => {
-    for(const e in value ) {
+    for (const e in value) {
         console.log(value[e].title)
     }
 })
@@ -99,10 +102,11 @@ let divUserAuth = createElement('div', {'class': 'div-user-auth', 'data': 'test'
  * Fonction de création d'un élément html
  * @param tagName
  * @param attributes
+ * @param elementParent
  * @param text
  * @returns {*}
  */
-function createElement(tagName, attributes = {}, text) {
+function createElement(tagName, attributes = {}, elementParent, text) {
     const element = document.createElement(tagName)
     console.log('CRETATE ELEMENT')
     console.log(attributes)
@@ -110,18 +114,26 @@ function createElement(tagName, attributes = {}, text) {
     for (const [attribute, value] of Object.entries(attributes)) {
         element.setAttribute(attribute, value)
     }
+
     if (text) {
         element.innerText = text
+    }
+    if (elementParent) {
+        elementParent.appendChild(element)
     }
     return element
 }
 
+
+/**
+ *Gestion des cookies pour l'authentification
+ **/
 let cookiesLogUser = document.cookie
 
 
 console.log(cookiesLogUser)
 
-if(cookiesLogUser){
+if (cookiesLogUser) {
     const entete = document.querySelector('.ajout-entete')
     const divEt = createElement('div', {'class': 'entete-edition'})
 
