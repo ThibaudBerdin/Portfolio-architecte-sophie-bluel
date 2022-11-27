@@ -11,7 +11,11 @@
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 	<link rel="stylesheet" href="./assets/edit_projets.css">
-
+	<link rel="stylesheet" href="./assets/modal.css">
+	<script
+			crossorigin="anonymous"
+			src="https://kit.fontawesome.com/6076788913.js"
+	></script>
 </head>
 <body>
 <div class="ajout-entete">
@@ -46,7 +50,12 @@
 		</article>
 	</section>
 	<section id="portfolio">
+
+		<div style="display: flex; justify-content: center">
 		<h2>Mes Projets</h2>
+			<a href="#id01"><i class="fa-light fa-pen-to-square"></i>Editer</a>
+		</div>
+		
 		<div class="grp-btn-filter">
 			<div class="btn-filter tous" id="tous">Tous</div>
 			<div class="btn-filter objets" id="objets">Objets</div>
@@ -86,6 +95,32 @@
 		</ul>
 	</nav>
 </footer>
+
+
+<!--
+MODALE 01
+!-->
+<div id="id01" class="modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<header class="container-modal header-modal">
+				<a href="#" class="closebtn">X</a>
+				<h2>Galerie Photo</h2>
+			</header>
+			<div class="container-modal">
+				<p>Texte dans la fenêtre modale.</p>
+			</div>
+			<footer class="container-modal footer-modal">
+				<p>Pied de page de modale</p>
+			</footer>
+		</div>
+	</div>
+</div>
+
+
+
 </body>
+
+
 </html>
 <script src="./assets/api.js"></script>

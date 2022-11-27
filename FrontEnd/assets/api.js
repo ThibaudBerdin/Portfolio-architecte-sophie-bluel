@@ -4,7 +4,7 @@ let lienAPI = "http://localhost:5678/api/"
  * Recuperation depuis l'API et ajout des projets sur la page d'accueil avec attribution des
  * catégories dans les classes
  */
-fetch(lienAPI + "works")
+let tableauProjets = fetch(lienAPI + "works")
     .then(function (res) {
         if (res.ok) {
             return res.json()
@@ -34,8 +34,15 @@ fetch(lienAPI + "works")
             figure.appendChild(figcaption)
             gallery.appendChild(figure)
         }
+
+        return value
     })
 
+tableauProjets.then((value) => {
+    for(const e in value ) {
+        console.log(value[e].title)
+    }
+})
 
 /**
  *
@@ -124,4 +131,12 @@ if(cookiesLogUser){
     <button class="btn-valider-changements">publier les changements</button>
     </div>`
     entete.appendChild(divEt)
+
+    const portfolio = document.querySelector('#portfolio h2')
+    editIcone = createElement('div', {'class': 'icone-edit'}, 'Editer')
+    portfolio.appendChild(editIcone)
+
+    const grpBtnFlt = document.querySelector('.grp-btn-filter')
+    grpBtnFlt.style.visibility = "hidden"
+
 }
