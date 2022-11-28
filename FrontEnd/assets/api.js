@@ -39,11 +39,15 @@ let tableauProjets = fetch(lienAPI + "works")
     })
 
 /**
- * TESTS
+ * Ajout projets dans modal editable
  **/
 tableauProjets.then((value) => {
     for (const e in value) {
-        console.log(value[e].title)
+        createElement('div', {'id': 'projet'+ value[e].id, 'class': ''}, '#grid-projets',)
+        createElement('img', {'class' : '','crossorigin': 'anonymous', 'src': value[e].imageUrl},'#projet' + value[e].id,)
+        createElement('h3', {'class': ''}, '#projet' + value[e].id, value[e].title)
+
+
     }
 })
 
@@ -102,11 +106,11 @@ let divUserAuth = createElement('div', {'class': 'div-user-auth', 'data': 'test'
  * Fonction de création d'un élément html
  * @param tagName
  * @param attributes
- * @param elementParent
+ * @param elementParentId
  * @param text
  * @returns {*}
  */
-function createElement(tagName, attributes = {}, elementParent, text) {
+function createElement(tagName, attributes = {}, elementParentId, text) {
     const element = document.createElement(tagName)
     console.log('CRETATE ELEMENT')
     console.log(attributes)
@@ -118,8 +122,9 @@ function createElement(tagName, attributes = {}, elementParent, text) {
     if (text) {
         element.innerText = text
     }
-    if (elementParent) {
-        elementParent.appendChild(element)
+    if (elementParentId) {
+       const elemParent = document.querySelector(elementParentId)
+        elemParent.appendChild(element)
     }
     return element
 }
@@ -144,11 +149,12 @@ if (cookiesLogUser) {
     </div>`
     entete.appendChild(divEt)
 
-    const portfolio = document.querySelector('#portfolio h2')
-    editIcone = createElement('div', {'class': 'icone-edit'}, 'Editer')
-    portfolio.appendChild(editIcone)
+
+    editIcone = createElement('a', {'class': 'fa-light fa-pen-to-square', 'href': "#id01"},'#portfolioEdit','Editer')
+
 
     const grpBtnFlt = document.querySelector('.grp-btn-filter')
     grpBtnFlt.style.visibility = "hidden"
 
 }
+
