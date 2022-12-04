@@ -237,3 +237,15 @@ footer nav ul {
 .menu {
     text-decoration: none;
 }
+
+.shadow-box{
+    box-shadow: 0px 4px 14px lightgrey;
+}
+.lien-button{
+    text-decoration: none;
+    color: white;
+}
+.supp-galerie{
+    text-decoration: none;
+    color: #D65353;
+}

@@ -6,16 +6,20 @@ let lienAPI = "http://localhost:5678/api/"
  */
 let tableauProjets = fetch(lienAPI + "works")
     .then(function (res) {
+
         if (res.ok) {
             return res.json()
+            console.log(res.json)
         }
     })
     .then(function (value) {
+
         let gallery = document.getElementById("gallery")
 
         for (const e in value) {
 
             let figure = document.createElement('figure')
+            figure.setAttribute('id', 'accueil-projet-' + value[e].id)
             let figcaption = document.createElement('figcaption')
             figcaption.innerText = value[e].title
             let img = document.createElement('img')
@@ -41,15 +45,60 @@ let tableauProjets = fetch(lienAPI + "works")
 /**
  * Ajout projets dans modal editable
  **/
-tableauProjets.then((value) => {
-    for (const e in value) {
-        createElement('div', {'id': 'projet'+ value[e].id, 'class': ''}, '#grid-projets',)
-        createElement('img', {'class' : '','crossorigin': 'anonymous', 'src': value[e].imageUrl},'#projet' + value[e].id,)
-        createElement('h3', {'class': ''}, '#projet' + value[e].id, value[e].title)
+
+function listeTableauProjets(tableauProjets) {
+    tableauProjets.then((value) => {
+        for (const e in value) {
+            createElement('div', {'id': 'projet' + value[e].id, 'class': ''}, '#grid-projets',)
+            createElement('img', {
+                'class': '', 'crossorigin': 'anonymous', 'src': value[e].imageUrl, 'id': 'img-projet-' + value[e].id
+            }, '#projet' + value[e].id,)
+            createElement('h3', {'class': ''}, '#projet' + value[e].id, value[e].title)
+            const delElem = createElement('button', {
+                'class': 'icon-delete', 'id': '#delete-icone' + value[e].id, 'data-id': value[e].id
+            }, '#projet' + value[e].id, 'Paaaa')
+            delElem.addEventListener('click', () => {
+                delWork(delElem.dataset.id)
+            })
+        }
+    })
+}
+
+listeTableauProjets(tableauProjets)
 
 
-    }
-})
+/**
+ * SUPPRIME UN PROJET AVEC L'ID
+ */
+
+function delWork(id) {
+    fetch(lienAPI + "works/" + id, {
+        method: 'DELETE', headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token'), "Content-Type": "application/json"
+        }
+    })
+        .then((r) => {
+            if (r.ok) {
+                document.querySelector('#projet' + id).remove()
+                document.querySelector('#accueil-projet-' + id).remove()
+            }
+        })
+}
+
+
+/**
+ * Supprime tous les projets
+ */
+function removeAllProjets() {
+    fetch(lienAPI + 'works')
+        .then(data => data.json())
+        .then(jsonListWork => {
+            for (const i of jsonListWork) {
+                delWork(i.id)
+            }
+        })
+}
+
 
 /**
  *
@@ -74,28 +123,28 @@ function allDisplayNone() {
 
 function filterTousOnClick() {
     const projets = document.querySelectorAll('.projet')
-    console.log(projets)
+
     projets.forEach(element => element.style.display = "")
 }
 
 function filterObjetsOnClick() {
     allDisplayNone()
     const projets = document.querySelectorAll('.figure-objets')
-    console.log(projets)
+
     projets.forEach(element => element.style.display = "")
 }
 
 function filterAppartementOnClick() {
     allDisplayNone()
     const projets = document.querySelectorAll('.figure-appartements')
-    console.log(projets)
+
     projets.forEach(element => element.style.display = "")
 }
 
 function filterHotelOnClick() {
     allDisplayNone()
     const projets = document.querySelectorAll('.figure-hotels')
-    console.log(projets)
+
     projets.forEach(element => element.style.display = "")
 }
 
@@ -112,9 +161,7 @@ let divUserAuth = createElement('div', {'class': 'div-user-auth', 'data': 'test'
  */
 function createElement(tagName, attributes = {}, elementParentId, text) {
     const element = document.createElement(tagName)
-    console.log('CRETATE ELEMENT')
-    console.log(attributes)
-    console.log(Object.entries(attributes))
+
     for (const [attribute, value] of Object.entries(attributes)) {
         element.setAttribute(attribute, value)
     }
@@ -123,7 +170,7 @@ function createElement(tagName, attributes = {}, elementParentId, text) {
         element.innerText = text
     }
     if (elementParentId) {
-       const elemParent = document.querySelector(elementParentId)
+        const elemParent = document.querySelector(elementParentId)
         elemParent.appendChild(element)
     }
     return element
@@ -136,9 +183,7 @@ function createElement(tagName, attributes = {}, elementParentId, text) {
 let cookiesLogUser = document.cookie
 
 
-console.log(cookiesLogUser)
-
-if (cookiesLogUser) {
+if (localStorage.getItem('token')) {
     const entete = document.querySelector('.ajout-entete')
     const divEt = createElement('div', {'class': 'entete-edition'})
 
@@ -150,11 +195,34 @@ if (cookiesLogUser) {
     entete.appendChild(divEt)
 
 
-    editIcone = createElement('a', {'class': 'fa-light fa-pen-to-square', 'href': "#id01"},'#portfolioEdit','Editer')
+    editIcone = createElement('a', {'class': 'fa-light fa-pen-to-square', 'href': "#id01"}, '#portfolioEdit', 'Editer')
 
 
     const grpBtnFlt = document.querySelector('.grp-btn-filter')
     grpBtnFlt.style.visibility = "hidden"
 
 }
+
+
+/**
+ * Recuperer les catégories
+ */
+
+fetch(lienAPI + "categories")
+    .then(data => data.json())
+    .then(categories => {
+        for (const i in categories) {
+
+            const option = createElement('option', {'value': categories[i].id}, '#categorie-select', categories[i].name)
+
+        }
+    })
+
+/**
+ * Ajout un evenement pour supprimer tous les projets
+ * @type {Element}
+ *
+ */
+const btnSupProjets = document.querySelector('#supprimer-projets')
+btnSupProjets.addEventListener('click', removeAllProjets)
 

@@ -9,9 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
           rel="stylesheet">
     <meta name="description" content="">
-    <link rel="stylesheet" href="./assets/style.css">
-    <link rel="stylesheet" href="./assets/edit_projets.css">
-    <link rel="stylesheet" href="./assets/modal.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/edit_projets.css">
+    <link rel="stylesheet" href="./assets/css/modal.css">
     <script
         crossorigin="anonymous"
         src="https://kit.fontawesome.com/6076788913.js"
@@ -104,17 +104,56 @@ MODALE 01
     <div class="modal-dialog">
         <div class="modal-content">
             <header class="container-modal header-modal">
-                <a href="#" class="closebtn">X</a>
                 <h2>Galerie Photo</h2>
+                <a href="#" class="closebtn">X</a>
             </header>
             <div class="container-modal">
                 <div class="grid-projets" id="grid-projets">
                 </div>
-                <p>Texte dans la fenêtre modale.</p>
+                <p></p>
             </div>
             <footer class="container-modal footer-modal">
-              <div class="btn-modal">Ajouter une photo</div>
-              <a href="">Supprimer la galerie</a>
+                 <div class="btn-modal"><a class="lien-button" href="#id02"> Ajouter une photo</a></div>
+
+              <a class="supp-galerie" href="#" id="supprimer-projets">Supprimer la galerie</a>
+            </footer>
+        </div>
+    </div>
+</div>
+
+
+<!--
+MODALE 02
+!-->
+<div id="id02" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <header class="container-modal header-modal">
+                <h2>Ajouter une photo</h2>
+                <a href="#" class="closebtn">x</a>
+            </header>
+            <div class="container-modal-2">
+
+                <form id="add-projet" class="form-add-projet" action="http://localhost:5678/api/works">
+
+                    <div class="upload-image">
+
+                    <input class="input-upload-image button-submit-projet" type="file" name="image" id="image" required="required">
+
+                    </div>
+                    <label for="titre">Titre</label>
+                    <input class="form-add-champ shadow-box" type="text" name="title" id="titre" required="required">
+                    <label for="categorie-select">Catégorie</label>
+                    <select class="form-add-champ shadow-box" type="select" name="category" id="categorie-select">
+
+                    </select>
+                    <button class="button-submit-projet" id="submit-new-projet" type="submit" value="Valider"> Valider </button>
+                </form>
+            </div>
+            <footer class="container-modal footer-modal">
+
+
+
             </footer>
         </div>
     </div>
@@ -125,4 +164,7 @@ MODALE 01
 
 
 </html>
-<script src="./assets/api.js"></script>
+<script src="./assets/js/api.js"></script>
+<script src="./assets/js/work.js"></script>
+<script defer src="./assets/js/deleteWorks.js"></script>
+<script src="./assets/js/postProjet.js"></script>
