@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/edit_projets.css">
     <link rel="stylesheet" href="./assets/css/modal.css">
+    <link rel="stylesheet" href="./assets/css/t-style.css">
     <script
         crossorigin="anonymous"
         src="https://kit.fontawesome.com/6076788913.js"
@@ -23,12 +24,12 @@
 </div>
 <header>
 
-    <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+    <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
     <nav>
         <ul>
             <li><a class="menu" href="index.html">projets</a></li>
             <li>contact</li>
-            <li><a class="menu" href="./login.html">login</a></li>
+            <li><a class="menu menu-login" href="./login.html">login</a></li>
             <li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
         </ul>
     </nav>
@@ -39,7 +40,7 @@
             <img src="./assets/images/sophie-bluel.png" alt="">
         </figure>
         <article>
-            <h2>Designer d'espace</h2>
+            <h2>Designer d'espace  <i class="fa-light fa-pen-to-square"></i> </h2>
             <p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison
                 finale du chantier.</p>
             <p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les
@@ -51,8 +52,8 @@
     </section>
     <section id="portfolio">
 
-        <div id="portfolioEdit" style="display: flex; justify-content: center">
-            <h2>Mes Projets</h2>
+        <div id="portfolioEdit" class="t-display-flex">
+            <h2 class="t-margin-0">Mes Projets</h2>
 
         </div>
 
@@ -137,9 +138,9 @@ MODALE 02
                 <form id="add-projet" class="form-add-projet" action="http://localhost:5678/api/works">
 
                     <div class="upload-image">
-
-                    <input class="input-upload-image button-submit-projet" type="file" name="image" id="image" required="required">
-
+                    <label for="image" class="input-upload-image button-submit-projet">Choisir une image </label>
+                    <input class="" type="file" name="image" id="image" required="required">
+                        <p> jpg, png: 4mo max</p>
                     </div>
                     <label for="titre">Titre</label>
                     <input class="form-add-champ shadow-box" type="text" name="title" id="titre" required="required">

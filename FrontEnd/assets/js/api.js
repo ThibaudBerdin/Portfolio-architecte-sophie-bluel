@@ -8,8 +8,7 @@ let tableauProjets = fetch(lienAPI + "works")
     .then(function (res) {
 
         if (res.ok) {
-            return res.json()
-            console.log(res.json)
+            return res.json()           
         }
     })
     .then(function (value) {
@@ -49,14 +48,25 @@ let tableauProjets = fetch(lienAPI + "works")
 function listeTableauProjets(tableauProjets) {
     tableauProjets.then((value) => {
         for (const e in value) {
-            createElement('div', {'id': 'projet' + value[e].id, 'class': ''}, '#grid-projets',)
+            createElement('div', {'class': 't-relative', 'id': 'projet' + value[e].id}, '#grid-projets',)
+
+            createElement('div', {'id': 'bloc-img-' + value[e].id}, '#projet' + value[e].id)
+
             createElement('img', {
-                'class': '', 'crossorigin': 'anonymous', 'src': value[e].imageUrl, 'id': 'img-projet-' + value[e].id
-            }, '#projet' + value[e].id,)
-            createElement('h3', {'class': ''}, '#projet' + value[e].id, value[e].title)
-            const delElem = createElement('button', {
-                'class': 'icon-delete', 'id': '#delete-icone' + value[e].id, 'data-id': value[e].id
-            }, '#projet' + value[e].id, 'Paaaa')
+                'class': 'object-fit-cover',
+                'crossorigin': 'anonymous',
+                'src': value[e].imageUrl,
+                'id': 'img-projet-' + value[e].id
+            }, '#bloc-img-' + value[e].id,)
+
+            const delElem = createElement('div', {
+                'class': 'icon-delete', 'id': 'delete-icone-' + value[e].id, 'data-id': value[e].id
+            }, '#bloc-img-' + value[e].id)
+
+            createElement('i', {'class': 'icone-suppression fa-light fa-trash'}, '#delete-icone-' + value[e].id)
+
+            createElement('h3', {'class': 't-flex-wrap'}, '#projet' + value[e].id, value[e].title)
+
             delElem.addEventListener('click', () => {
                 delWork(delElem.dataset.id)
             })
@@ -87,7 +97,7 @@ function delWork(id) {
 
 
 /**
- * Supprime tous les projets
+ * Fonction de suppression de tous les projets
  */
 function removeAllProjets() {
     fetch(lienAPI + 'works')
@@ -178,10 +188,9 @@ function createElement(tagName, attributes = {}, elementParentId, text) {
 
 
 /**
- *Gestion des cookies pour l'authentification
+ *Gestion du local Storage pour l'authentification 
+ * Modification de la page d'accueil
  **/
-let cookiesLogUser = document.cookie
-
 
 if (localStorage.getItem('token')) {
     const entete = document.querySelector('.ajout-entete')
@@ -193,16 +202,29 @@ if (localStorage.getItem('token')) {
     <button class="btn-valider-changements">publier les changements</button>
     </div>`
     entete.appendChild(divEt)
-
-
-    editIcone = createElement('a', {'class': 'fa-light fa-pen-to-square', 'href': "#id01"}, '#portfolioEdit', 'Editer')
-
+    editIcone = createElement('a', {'class': 'fa-light fa-pen-to-square lien-icone-editer', 'href': "#id01"}, '#portfolioEdit', '  modifier')
 
     const grpBtnFlt = document.querySelector('.grp-btn-filter')
     grpBtnFlt.style.visibility = "hidden"
 
+    //MODIFICATION DU LOGIN / LOGOUT
+    const login = document.querySelector('.menu-login')
+    login.innerText = 'Logout'
+    login.setAttribute('href', "./logout.html")
+    login.addEventListener('click', logout)
+
 }
 
+
+/**
+ * FONCTION LOGOUT
+ */
+
+function logout(event){
+    event.preventDefault()
+    localStorage.clear()
+    location.href = "http://localhost:63342/Portfolio-architecte-sophie-bluel/FrontEnd/index.html"
+}
 
 /**
  * Recuperer les catégories

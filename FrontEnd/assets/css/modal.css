@@ -103,6 +103,11 @@ header {
     grid-auto-rows: minmax(100px, auto);
 }
 
+.t-flex-wrap{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .grid-projets div img {
 
     height: 150px;
@@ -116,13 +121,31 @@ header {
     color: white;
     padding: 10px 50px;
 }
+
+
 .icon-delete{
     color: black;
     position: absolute;
+    z-index: 1;
+    top: 3%;
+    left: 70%;
+    border-radius: 5px;
+    width: 35px;
+    background: black;
+    display: flex;
+    justify-content: center;
+}
+.icon-delete:hover{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.icone-suppression{
+    padding: 5px;
+    color: white;
 }
 
 .container-modal-2{
-    margin: auto;
+    margin: 0 10%;
 }
 
 .form-add-projet{
@@ -141,11 +164,27 @@ header {
     border-radius: 60px;
     color: white;
     height: 30px;
+    padding: 10px 15px;
+
 }
 .upload-image{
     height: 10vh;
     background: #E8F1F7;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: 5px;
+
 }
 .input-upload-image{
     margin: auto;
+}
+
+.img-bloc{
+    display: inline-block;
+    position: relative;
+}
+#portfolioEdit .a{
+    text-after-overflow: none;
 }

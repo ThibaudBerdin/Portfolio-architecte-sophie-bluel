@@ -60,27 +60,10 @@ function submitLoginForm(event) {
         })
         .catch((error) => {
             console.error('IDENTIFIANT INTROUVABLE')
-            if(document.querySelector('.mauvais-login')){
-                document.querySelector('.mauvais-login').remove()
-            }
-            createElement('div', {'class': 'mauvais-login'}, 'h2', 'MAUVAIS IDENTIFIANT OU MOT DE PASSE')
+           document.querySelector('.erreur-login').innerText = "Erreur d'identifiant ou de mot de passe"
+
+
         })
 
 }
-
-
-/**
- *Ajoute un cookie
- *
- * @param name
- * @param value
- * @param expireDays
-
- function setCookie(name, value, expireDays) {
-    const exDate = new Date()
-    exDate.setDate(exDate.getDate() + expireDays)
-    document.cookie = name + "=" + value + ((expireDays == null) ? "" : ";expires=" + exDate)
-}
-
- */
 
