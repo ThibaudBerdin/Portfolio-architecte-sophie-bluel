@@ -1,18 +1,30 @@
+let imageUpload = document.querySelector("#imageUpload");
+const reader = new FileReader();
 
+function previewPicture(e) {
+  console.log("-----Preview Picture-----");
+  const input = e.target;
+  const inputFile = input.files[0];
 
-let imageUpload = document.querySelector('#imageUpload')
+  if (inputFile) {
+    addListeners(reader);
+    reader.readAsDataURL(inputFile);
+  }
+}
 
-function previewPicture(e){
-    console.log("preview Picture")
-    console.log(e.files)
-    const [picture]= e.files
-    if(picture) {
-        const reader = new FileReader();
+function addListeners(reader) {
+  reader.addEventListener("load", handleEvent);
+}
 
-        reader.onload = function(e){
-            console.log(e.target.result)
-            imageUpload.src = e.target.result
-            reader.readAsDataURL(picture)
-        }
-    }
+function handleEvent(event) {
+  document
+    .querySelector(".input-upload-image")
+    .setAttribute("style", "display:none");
+  document
+    .querySelector("#p-format-accept")
+    .setAttribute("style", "display:none");
+  document
+    .querySelector("#submit-new-projet")
+    .setAttribute("style", "background:#1D6154");
+  imageUpload.src = reader.result;
 }

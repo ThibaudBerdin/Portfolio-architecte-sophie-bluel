@@ -84,7 +84,6 @@ header {
     font-size: 25px;
 }
 
-
 .footer-modal {
     display: flex;
     flex-direction: column;
@@ -93,16 +92,13 @@ header {
     font-size: 20px;
     text-align: center;
     gap: 20px;
-
 }
 
 .grid-projets {
-
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 10px;
     grid-auto-rows: minmax(150px, 200px);
-
 }
 
 .t-flex-wrap {
@@ -111,19 +107,17 @@ header {
 }
 
 .grid-projets div img {
-
     height: 150px;
 }
 
 .btn-modal {
     text-align: center;
     margin: auto;
-    background: #1D6154;
+    background: #1d6154;
     border-radius: 60px;
     color: white;
     padding: 10px 50px;
 }
-
 
 .icon-delete {
     color: black;
@@ -159,50 +153,45 @@ header {
 
 .form-add-champ {
     height: 40px;
-
 }
 
 .button-submit-projet {
-    background: #A7A7A7;
+    background: #a7a7a7;
     border-radius: 60px;
     color: white;
 
-    margin:0 auto;
+    margin: 0 auto;
     text-align: center;
     padding: 10px 0;
     border: 0px;
     width: 40%;
-
-
 }
 
 .upload-image {
-    height: 10vh;
-    background: #E8F1F7;
+    height: 20vh;
+    background: #e8f1f7;
     display: flex;
     align-content: center;
     flex-direction: column;
     text-align: center;
-    padding-bottom: 5px;
-
+    padding: 2% 0;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    min-height: 15vh;
 }
 
 .input-upload-image {
-    background: #CBD6DC;
+    background: #cbd6dc;
     border-radius: 60px;
     color: #306685;
     padding: 10px 30px;
     margin: auto;
-
 }
 
 .img-bloc {
     display: inline-block;
     position: relative;
-}
-
-#portfolioEdit .a {
-    text-after-overflow: none;
 }
 
 #add-projet > label {
@@ -216,4 +205,7 @@ header {
     font-weight: 400;
     font-size: 26px;
     line-height: 30px;
+}
+
+.image-preview-load {
 }
