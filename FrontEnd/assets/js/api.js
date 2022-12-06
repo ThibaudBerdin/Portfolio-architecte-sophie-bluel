@@ -8,7 +8,7 @@ let tableauProjets = fetch(lienAPI + "works")
     .then(function (res) {
 
         if (res.ok) {
-            return res.json()           
+            return res.json()
         }
     })
     .then(function (value) {
@@ -188,31 +188,39 @@ function createElement(tagName, attributes = {}, elementParentId, text) {
 
 
 /**
- *Gestion du local Storage pour l'authentification 
+ *Gestion du local Storage pour l'authentification
  * Modification de la page d'accueil
  **/
 
 if (localStorage.getItem('token')) {
     const entete = document.querySelector('.ajout-entete')
     const divEt = createElement('div', {'class': 'entete-edition'})
-
+    document.querySelector('header').setAttribute('style', 'margin-top:65px')
     divEt.innerHTML += `<div class="mode-edition">
-    Mode Edition
+    <i class="fa-light fa-pen-to-square"></i>
+    Mode édition
     </div>
     <button class="btn-valider-changements">publier les changements</button>
     </div>`
     entete.appendChild(divEt)
-    editIcone = createElement('a', {'class': 'fa-light fa-pen-to-square lien-icone-editer', 'href': "#id01"}, '#portfolioEdit', '  modifier')
+
+
+    const divEditLien = document.querySelector('#projets-edit-lien')
+    divEditLien.innerHTML += `<a class="t-a-td" href="#id01"><i class="fa-light fa-pen-to-square"></i> modifier</a>`
+
 
     const grpBtnFlt = document.querySelector('.grp-btn-filter')
     grpBtnFlt.style.visibility = "hidden"
 
     //MODIFICATION DU LOGIN / LOGOUT
     const login = document.querySelector('.menu-login')
-    login.innerText = 'Logout'
+    login.innerText = 'logout'
     login.setAttribute('href', "./logout.html")
     login.addEventListener('click', logout)
 
+
+    //modif intro
+    document.querySelector('#edit-intro').innerHTML = `<i class="fa-light fa-pen-to-square" style="padding: 20px 0"></i> modifier`
 }
 
 
@@ -220,10 +228,10 @@ if (localStorage.getItem('token')) {
  * FONCTION LOGOUT
  */
 
-function logout(event){
+function logout(event) {
     event.preventDefault()
     localStorage.clear()
-    location.href = "http://localhost:63342/Portfolio-architecte-sophie-bluel/FrontEnd/index.html"
+    location.href = "/FrontEnd/index.html"
 }
 
 /**

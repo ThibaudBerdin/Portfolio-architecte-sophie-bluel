@@ -24,7 +24,7 @@ function postNewProjet(event){
 
         .then((response) => {
            if(response.ok){
-               location.href = "http://localhost:63342/Portfolio-architecte-sophie-bluel/FrontEnd/index.html"
+               location.href = "/FrontEnd/index.html"
            }
         })
 

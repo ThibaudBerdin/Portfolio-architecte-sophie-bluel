@@ -45,9 +45,10 @@ header {
     margin: auto;
     background-color: #ffffff;
     position: relative;
-    padding: 10px 0;
+    padding: 30px;
     outline: 0;
     border: 1px #777 solid;
+    border-radius: 10px;
     text-align: justify;
     width: 50%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -59,9 +60,8 @@ header {
 /* Bouton servant à fermer la fenêtre modale */
 .closebtn {
     text-decoration: none;
-    float: right;
-    font-size: 35px;
-    font-weight: bold;
+
+    font-size: 25px;
     color: black;
 }
 
@@ -77,11 +77,13 @@ header {
 }
 
 .header-modal {
+    margin-top: 15px;
+    justify-content: space-between;
+    display: flex;
     color: black;
     font-size: 25px;
-
-
 }
+
 
 .footer-modal {
     display: flex;
@@ -96,14 +98,14 @@ header {
 
 .grid-projets {
 
-    padding: 0 20px 50px 20px;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-gap: 20px;
-    grid-auto-rows: minmax(100px, auto);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(150px, 200px);
+
 }
 
-.t-flex-wrap{
+.t-flex-wrap {
     display: flex;
     flex-wrap: wrap;
 }
@@ -123,32 +125,33 @@ header {
 }
 
 
-.icon-delete{
+.icon-delete {
     color: black;
     position: absolute;
     z-index: 1;
     top: 3%;
-    left: 70%;
+    left: 60%;
     border-radius: 5px;
     width: 35px;
     background: black;
     display: flex;
     justify-content: center;
 }
-.icon-delete:hover{
+
+.icon-delete:hover {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.icone-suppression{
+.icone-suppression {
     padding: 5px;
     color: white;
 }
 
-.container-modal-2{
+.container-modal-2 {
     margin: 0 10%;
 }
 
-.form-add-projet{
+.form-add-projet {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -159,15 +162,21 @@ header {
 
 }
 
-.button-submit-projet{
+.button-submit-projet {
     background: #A7A7A7;
     border-radius: 60px;
     color: white;
-    height: 30px;
-    padding: 10px 15px;
+
+    margin:0 auto;
+    text-align: center;
+    padding: 10px 0;
+    border: 0px;
+    width: 40%;
+
 
 }
-.upload-image{
+
+.upload-image {
     height: 10vh;
     background: #E8F1F7;
     display: flex;
@@ -177,14 +186,34 @@ header {
     padding-bottom: 5px;
 
 }
-.input-upload-image{
+
+.input-upload-image {
+    background: #CBD6DC;
+    border-radius: 60px;
+    color: #306685;
+    padding: 10px 30px;
     margin: auto;
+
 }
 
-.img-bloc{
+.img-bloc {
     display: inline-block;
     position: relative;
 }
-#portfolioEdit .a{
+
+#portfolioEdit .a {
     text-after-overflow: none;
+}
+
+#add-projet > label {
+    margin: 0px;
+    padding-top: 5px;
+}
+
+.titre-modal-2 {
+    padding: 30px 0;
+    text-align: center;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 30px;
 }

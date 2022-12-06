@@ -1,5 +1,5 @@
-const exampleForm = document.querySelector("#login-form")
-exampleForm.addEventListener("submit", submitLoginForm)
+const loginForm = document.querySelector("#login-form")
+loginForm.addEventListener("submit", submitLoginForm)
 
 
 /**
@@ -55,12 +55,14 @@ function submitLoginForm(event) {
             console.log(rJson)
             localStorage.setItem('token', rJson.token)
             if (rJson.token) {
-                location.href = "http://localhost:63342/Portfolio-architecte-sophie-bluel/FrontEnd/index.html"
+              
+                
+                location.href = "/frontend/index.html"
             }
         })
         .catch((error) => {
             console.error('IDENTIFIANT INTROUVABLE')
-           document.querySelector('.erreur-login').innerText = "Erreur d'identifiant ou de mot de passe"
+           document.querySelector('.erreur-login').innerText = "Erreur dans l’identifiant ou le mot de passe"
 
 
         })

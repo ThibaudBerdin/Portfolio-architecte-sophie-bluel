@@ -4,3 +4,19 @@
 .t-display-flex{
     display: flex;
 }
+
+.t-border-grey{
+    border-bottom: grey 1px solid;
+    margin: 20px 0 20px 0;
+}
+.t-justify-content-r {
+    justify-content: right;
+}
+
+.t-a-td{
+    text-decoration: none;
+    color: black;
+}
+.t-a-td:visited{
+    color: black;
+}

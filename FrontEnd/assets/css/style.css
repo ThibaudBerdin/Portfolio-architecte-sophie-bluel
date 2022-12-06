@@ -245,10 +245,14 @@ footer nav ul {
 .lien-button{
     text-decoration: none;
     color: white;
+
 }
 .supp-galerie{
     text-decoration: none;
     color: #D65353;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
 }
 
 input[type="file"] {
@@ -281,4 +285,31 @@ input[type="file"] {
     justify-content: center;
     align-items: center;
     gap: 20px;
+}
+
+#add-projet > .form-add-champ {
+
+    height: 50px;
+    font-size: 1.2em;
+    border: none;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+#add-projet > label {
+    margin: 2em 0 1em 0;
+}
+#add-projet select{
+
+}
+
+.modif-icone{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+}
+.ajout-entete{
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
 }
