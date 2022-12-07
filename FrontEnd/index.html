@@ -81,11 +81,11 @@
         </div>
         <div class="gallery" id="gallery">
             <!--
-          <figure>
-              <img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
-              <figcaption>Abajour Tahina</figcaption>
-          </figure>
-          !-->
+              <figure>
+                  <img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
+                  <figcaption>Abajour Tahina</figcaption>
+              </figure>
+              !-->
         </div>
     </section>
     <section id="contact">
@@ -183,6 +183,7 @@ MODALE 02
                             name="title"
                             id="titre"
                             required="required"
+                            onchange="activeTitleLoad(event)"
                     />
                     <label for="categorie-select">Catégorie</label>
                     <select
@@ -190,7 +191,10 @@ MODALE 02
                             type="select"
                             name="category"
                             id="categorie-select"
-                    ></select>
+                            onchange="activeCategoryLoad(event)"
+                    >
+                        <option value=""></option>
+                    </select>
                     <div class="t-border-grey"></div>
                     <button
                             class="button-submit-projet"

@@ -1,3 +1,9 @@
+//Variable d'état pour le boutton d'envoi d'un projet
+let imgLoad = false;
+let titleLoad = false;
+let categoryLoad = false;
+
+//Gestion de la récupération et de l'affichage de l'image en preivew
 let imageUpload = document.querySelector("#imageUpload");
 const reader = new FileReader();
 
@@ -23,8 +29,41 @@ function handleEvent(event) {
   document
     .querySelector("#p-format-accept")
     .setAttribute("style", "display:none");
-  document
-    .querySelector("#submit-new-projet")
-    .setAttribute("style", "background:#1D6154");
+
   imageUpload.src = reader.result;
+  imgLoad = true;
+  activeButton();
+}
+
+//Gestion des états du bouton
+function activeButton() {
+  if (imgLoad && titleLoad && categoryLoad) {
+    document
+      .querySelector("#submit-new-projet")
+      .setAttribute("style", "background:#1D6154");
+  } else {
+    document
+      .querySelector("#submit-new-projet")
+      .setAttribute("style", "background:#a7a7a7");
+  }
+}
+
+function activeTitleLoad(e) {
+  if (e.target.value) {
+    titleLoad = true;
+    activeButton();
+  } else {
+    titleLoad = false;
+    activeButton();
+  }
+}
+
+function activeCategoryLoad(e) {
+  if (e.target.value) {
+    categoryLoad = true;
+    activeButton();
+  } else {
+    categoryLoad = false;
+    activeButton();
+  }
 }
