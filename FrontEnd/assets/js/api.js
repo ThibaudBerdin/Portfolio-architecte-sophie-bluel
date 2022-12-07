@@ -217,7 +217,7 @@ function createElement(tagName, attributes = {}, elementParentId, text) {
 if (localStorage.getItem("token")) {
   const entete = document.querySelector(".ajout-entete");
   const divEt = createElement("div", { class: "entete-edition" });
-  document.querySelector("header").setAttribute("style", "margin-top:65px");
+  document.querySelector("header").setAttribute("style", "margin-top:100px");
   divEt.innerHTML += `<div class="mode-edition">
     <i class="fa-light fa-pen-to-square"></i>
     Mode édition
