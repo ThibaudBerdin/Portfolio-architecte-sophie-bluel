@@ -27,7 +27,7 @@ function submitLoginForm(event) {
 
   const url = form.action;
   const formData = new FormData(form);
-  console.log(formData);
+
   const plainFormData = Object.fromEntries(formData.entries());
   const formDataJsonString = JSON.stringify(plainFormData);
 

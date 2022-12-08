@@ -1,3 +1,5 @@
+import { createElement } from "./modules/createElement.mjs";
+
 let lienAPI = "http://localhost:5678/api/";
 
 /**
@@ -39,7 +41,7 @@ let tableauProjets = fetch(lienAPI + "works")
   });
 
 /**
- * Ajout projets dans modal editable
+ * Fonction pour ajout des projets dans modal editable
  **/
 
 function listeTableauProjets(tableauProjets) {
@@ -98,6 +100,7 @@ function listeTableauProjets(tableauProjets) {
   });
 }
 
+//Appel de la fonction d'ajout de projets
 listeTableauProjets(tableauProjets);
 
 /**
@@ -183,31 +186,6 @@ let divUserAuth = createElement("div", {
   class: "div-user-auth",
   data: "test",
 });
-
-/**
- * Fonction de création d'un élément html
- * @param tagName
- * @param attributes
- * @param elementParentId
- * @param text
- * @returns {*}
- */
-function createElement(tagName, attributes = {}, elementParentId, text) {
-  const element = document.createElement(tagName);
-
-  for (const [attribute, value] of Object.entries(attributes)) {
-    element.setAttribute(attribute, value);
-  }
-
-  if (text) {
-    element.innerText = text;
-  }
-  if (elementParentId) {
-    const elemParent = document.querySelector(elementParentId);
-    elemParent.appendChild(element);
-  }
-  return element;
-}
 
 /**
  *Gestion du local Storage pour l'authentification
