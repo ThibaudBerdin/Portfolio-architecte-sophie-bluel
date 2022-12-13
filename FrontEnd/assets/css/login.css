@@ -11,3 +11,11 @@ footer {
     align-items: end;
     justify-content: end;
 }
+
+.erreur-login{
+    padding: 15px;
+    color: #d65353;
+}
+.div-mdp{
+    text-align: center;
+}

@@ -15,7 +15,23 @@ let tableauProjets = fetch(lienAPI + "works")
   .then(function (value) {
     let gallery = document.getElementById("gallery");
 
-    for (const e in value) {
+    for (const projet of value) {
+      let figure = document.createElement("figure");
+      figure.setAttribute("id", "accueil-projet-" + projet.id);
+      let figcaption = document.createElement("figcaption");
+      figcaption.innerText = projet.title;
+      let img = document.createElement("img");
+      img.setAttribute("src", projet.imageUrl);
+      img.setAttribute("crossorigin", "anonymous");
+      figure.setAttribute("data-cat-id", "cat-" + projet.categoryId);
+      figure.appendChild(img);
+      figure.appendChild(figcaption);
+      gallery.appendChild(figure);
+    }
+
+    /**
+       *
+       *  for (const e in value) {
       let figure = document.createElement("figure");
       figure.setAttribute("id", "accueil-projet-" + value[e].id);
       let figcaption = document.createElement("figcaption");
@@ -36,7 +52,7 @@ let tableauProjets = fetch(lienAPI + "works")
       figure.appendChild(figcaption);
       gallery.appendChild(figure);
     }
-
+*/
     return value;
   });
 
@@ -139,7 +155,7 @@ function removeAllProjets() {
  *
  * Bloc d'utilisation des filtres du projet de l'index
  *
- */
+
 const btnFilterObjets = document.querySelector("#objets");
 const bntFilterAppartement = document.querySelector("#appartements");
 const bntFilterHotel = document.querySelector("#hotels");
@@ -186,6 +202,8 @@ let divUserAuth = createElement("div", {
   class: "div-user-auth",
   data: "test",
 });
+
+ */
 
 /**
  *Gestion du local Storage pour l'authentification
@@ -257,3 +275,60 @@ fetch(lienAPI + "categories")
  */
 const btnSupProjets = document.querySelector("#supprimer-projets");
 btnSupProjets.addEventListener("click", removeAllProjets);
+
+/**
+ * AJOUT DES BOUTONS DE FILTRE DES PROJET
+ *
+ */
+fetch("http://localhost:5678/api/categories", {
+  headers: {
+    Accept: "application/json",
+  },
+})
+  .then(function (r) {
+    if (r.ok) {
+      return r.json();
+    }
+  })
+  .then((categories) => {
+    for (const category of categories) {
+      const filter = createElement(
+        "div",
+        { class: "btn-filter", id: "cat-" + category.id },
+        "#grp-btn-filter",
+        category.name
+      );
+      filter.addEventListener("click", filterProjets);
+    }
+    const filterAll = createElement(
+      "div",
+      { class: "btn-filter", id: "all" },
+      "#grp-btn-filter",
+      "Tous"
+    );
+    filterAll.addEventListener("click", filterProjets);
+  });
+
+/**
+ * FUNCTION DE FILTRE DES PROJETS
+ *
+ */
+function filterProjets(e) {
+  const projets = document.querySelectorAll("figure");
+
+  for (const projet of projets) {
+    if (e.srcElement.getAttribute("id") !== "all") {
+      if (
+        projet.getAttribute("data-cat-id") === e.srcElement.getAttribute("id")
+      ) {
+        projet.style.display = "";
+      } else {
+        projet.style.display = "none";
+      }
+    } else {
+      projet.style.display = "";
+    }
+  }
+
+  return "OK";
+}

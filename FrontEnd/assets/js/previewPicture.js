@@ -3,7 +3,7 @@ let imgLoad = false;
 let titleLoad = false;
 let categoryLoad = false;
 
-//Gestion de la récupération et de l'affichage de l'image en preivew
+//Gestion de la récupération et de l'affichage de l'image en preview
 let imageUpload = document.querySelector("#imageUpload");
 const reader = new FileReader();
 
@@ -26,6 +26,7 @@ function handleEvent(event) {
   document
     .querySelector(".input-upload-image")
     .setAttribute("style", "display:none");
+
   document
     .querySelector("#p-format-accept")
     .setAttribute("style", "display:none");
@@ -33,6 +34,7 @@ function handleEvent(event) {
   imageUpload.src = reader.result;
   imgLoad = true;
   activeButton();
+  loadNewImage();
 }
 
 //Gestion des états du bouton
@@ -66,4 +68,15 @@ function activeCategoryLoad(e) {
     categoryLoad = false;
     activeButton();
   }
+}
+
+function loadNewImage() {
+  const imageLoad = document.querySelector(".upload-image");
+  imageLoad.onclick = () => {
+    console.log("Reload Image");
+    window.location.reload();
+  };
+
+
+  //document.querySelector("#image").addEventListener("click", ());
 }

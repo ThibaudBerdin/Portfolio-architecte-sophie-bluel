@@ -5,7 +5,7 @@
         opacity: 0;
     }
     to {
-        top: 0px;
+        top: 0;
         opacity: 1;
     }
 }
@@ -52,7 +52,7 @@ header {
     text-align: justify;
     width: 50%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+    max-width: 900px;
     animation-name: slideDownFadeIN;
     animation-duration: 0.5s;
 }
@@ -74,6 +74,8 @@ header {
 
 .container-modal {
     padding: 2px 16px;
+    justify-content: center
+;
 }
 
 .header-modal {
@@ -124,7 +126,7 @@ header {
     position: absolute;
     z-index: 1;
     top: 3%;
-    left: 60%;
+    left: 70%;
     border-radius: 5px;
     width: 35px;
     background: black;
@@ -168,7 +170,6 @@ header {
 }
 
 .upload-image {
-    height: 20vh;
     background: #e8f1f7;
     display: flex;
     align-content: center;
@@ -208,4 +209,7 @@ header {
 }
 
 .image-preview-load {
+    width: 65%;
+    height: auto;
+    object-fit: contain;
 }
