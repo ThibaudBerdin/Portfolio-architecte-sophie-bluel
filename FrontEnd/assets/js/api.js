@@ -29,30 +29,6 @@ let tableauProjets = fetch(lienAPI + "works")
       gallery.appendChild(figure);
     }
 
-    /**
-       *
-       *  for (const e in value) {
-      let figure = document.createElement("figure");
-      figure.setAttribute("id", "accueil-projet-" + value[e].id);
-      let figcaption = document.createElement("figcaption");
-      figcaption.innerText = value[e].title;
-      let img = document.createElement("img");
-      img.setAttribute("src", value[e].imageUrl);
-      img.setAttribute("crossorigin", "anonymous");
-      if (value[e].categoryId === 1) {
-        figure.setAttribute("class", "projet figure-objets");
-      }
-      if (value[e].categoryId === 2) {
-        figure.setAttribute("class", "projet figure-appartements");
-      }
-      if (value[e].categoryId === 3) {
-        figure.setAttribute("class", "projet figure-hotels");
-      }
-      figure.appendChild(img);
-      figure.appendChild(figcaption);
-      gallery.appendChild(figure);
-    }
-*/
     return value;
   });
 
@@ -123,7 +99,7 @@ listeTableauProjets(tableauProjets);
  * SUPPRIME UN PROJET AVEC L'ID
  */
 
-function delWork(id) {
+export function delWork(id) {
   fetch(lienAPI + "works/" + id, {
     method: "DELETE",
     headers: {
@@ -150,60 +126,6 @@ function removeAllProjets() {
       }
     });
 }
-
-/**
- *
- * Bloc d'utilisation des filtres du projet de l'index
- *
-
-const btnFilterObjets = document.querySelector("#objets");
-const bntFilterAppartement = document.querySelector("#appartements");
-const bntFilterHotel = document.querySelector("#hotels");
-const bntFilterTous = document.querySelector("#tous");
-
-btnFilterObjets.addEventListener("click", filterObjetsOnClick);
-bntFilterAppartement.addEventListener("click", filterAppartementOnClick);
-bntFilterHotel.addEventListener("click", filterHotelOnClick);
-bntFilterTous.addEventListener("click", filterTousOnClick);
-
-function allDisplayNone() {
-  const projets = document.querySelectorAll(".projet");
-  projets.forEach((e) => (e.style.display = "none"));
-}
-
-function filterTousOnClick() {
-  const projets = document.querySelectorAll(".projet");
-
-  projets.forEach((element) => (element.style.display = ""));
-}
-
-function filterObjetsOnClick() {
-  allDisplayNone();
-  const projets = document.querySelectorAll(".figure-objets");
-
-  projets.forEach((element) => (element.style.display = ""));
-}
-
-function filterAppartementOnClick() {
-  allDisplayNone();
-  const projets = document.querySelectorAll(".figure-appartements");
-
-  projets.forEach((element) => (element.style.display = ""));
-}
-
-function filterHotelOnClick() {
-  allDisplayNone();
-  const projets = document.querySelectorAll(".figure-hotels");
-
-  projets.forEach((element) => (element.style.display = ""));
-}
-
-let divUserAuth = createElement("div", {
-  class: "div-user-auth",
-  data: "test",
-});
-
- */
 
 /**
  *Gestion du local Storage pour l'authentification
@@ -332,3 +254,87 @@ function filterProjets(e) {
 
   return "OK";
 }
+
+/**
+ * CHARGEMENT MODALE 2
+
+
+const btnModal2 = document.querySelector('#btn-to-modal-2')
+
+btnModal2.addEventListener('click',loadModal2 )
+
+function loadModal2(){
+  const modalDiv = document.querySelector('#id01')
+  modalDiv.innerHTML = `     <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="container-modal header-modal">
+                <a href="#id01"><i class="fa-thin fa-arrow-left"></i></a>
+                <a href="#" class="closebtn">x</a>
+            </div>
+            <h3 class="titre-modal-2">Ajouter une photo</h3>
+            <div class="container-modal-2">
+                <form
+                        enctype="multipart/form-data"
+                        id="add-projet"
+                        class="form-add-projet"
+                        action="http://localhost:5678/api/works"
+                >
+                    <div class="upload-image">
+                        <label for="image" class="input-upload-image"
+                        >+ Ajouter photo
+                        </label>
+                        <img
+                                class="image-preview-load"
+                                src=""
+                                alt=""
+                                id="imageUpload"
+
+
+                        />
+                        <input
+                                class=""
+                                accept="image/*"
+                                type="file"
+                                name="image"
+                                id="image"
+                                onchange="previewPicture(event)"
+                                required="required"
+                        />
+                        <p id="p-format-accept">jpg, png: 4mo max</p>
+                    </div>
+                    <label for="titre">Titre</label>
+                    <input
+                            class="form-add-champ shadow-box"
+                            type="text"
+                            name="title"
+                            id="titre"
+                            required="required"
+                            onchange="activeTitleLoad(event)"
+                    />
+                    <label for="categorie-select">Catégorie</label>
+                    <select
+                            class="form-add-champ shadow-box"
+                            type="select"
+                            name="category"
+                            id="categorie-select"
+                            onchange="activeCategoryLoad(event)"
+                    >
+                        <option value=""></option>
+                    </select>
+                    <div class="t-border-grey"></div>
+                    <button
+                            class="button-submit-projet"
+                            id="submit-new-projet"
+                            type="submit"
+                            value="Valider"
+                    >
+                        Valider
+                    </button>
+                </form>
+            </div>
+            <footer class="container-modal footer-modal"></footer>
+        </div>
+    </div>`
+}
+
+ */

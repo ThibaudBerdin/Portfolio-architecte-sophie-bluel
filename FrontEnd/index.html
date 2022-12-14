@@ -119,104 +119,101 @@ MODALE 01
 <div id="id01" class="modal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="container-modal header-modal t-justify-content-r">
-                <a href="#" class="closebtn">x</a>
-            </div>
-            <h3 class="titre-modal-2">Galerie Photo</h3>
-            <div class="container-modal">
-                <div class="grid-projets" id="grid-projets"></div>
-                <p></p>
-            </div>
-            <footer class="container-modal footer-modal">
-                <div class="t-border-grey"></div>
-                <a class="btn-modal lien-button" href="#id02"> Ajouter une photo</a>
-
-                <a class="supp-galerie" href="#" id="supprimer-projets"
-                >Supprimer la galerie</a
-                >
-            </footer>
-        </div>
-    </div>
-</div>
-
-<!--
-MODALE 02
-!-->
-<div id="id02" class="modal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="container-modal header-modal">
-                <a href="#id01"><i class="fa-thin fa-arrow-left"></i></a>
-                <a href="#" class="closebtn">x</a>
-            </div>
-            <h3 class="titre-modal-2">Ajouter une photo</h3>
-            <div class="container-modal-2">
-                <form
-                        enctype="multipart/form-data"
-                        id="add-projet"
-                        class="form-add-projet"
-                        action="http://localhost:5678/api/works"
-                >
-                    <div class="upload-image">
-                        <label for="image" class="input-upload-image"
-                        >+ Ajouter photo
-                        </label>
-                        <img
-                                class="image-preview-load"
-                                src="#"
-                                alt=""
-                                id="imageUpload"
-
-                        />
-                        <input
-                                class=""
-                                accept="image/*"
-                                type="file"
-                                name="image"
-                                id="image"
-                                onchange="previewPicture(event)"
-                                required="required"
-                        />
-                        <p id="p-format-accept">jpg, png: 4mo max</p>
-                    </div>
-                    <label for="titre">Titre</label>
-                    <input
-                            class="form-add-champ shadow-box"
-                            type="text"
-                            name="title"
-                            id="titre"
-                            required="required"
-                            onchange="activeTitleLoad(event)"
-                    />
-                    <label for="categorie-select">Catégorie</label>
-                    <select
-                            class="form-add-champ shadow-box"
-                            type="select"
-                            name="category"
-                            id="categorie-select"
-                            onchange="activeCategoryLoad(event)"
-                    >
-                        <option value=""></option>
-                    </select>
+            <div id="etape-modal-1">
+                <div class="container-modal header-modal t-justify-content-r">
+                    <a href="#" class="closebtn">x</a>
+                </div>
+                <h3 class="titre-modal-2">Galerie Photo</h3>
+                <div class="container-modal">
+                    <div class="grid-projets" id="grid-projets"></div>
+                    <p></p>
+                </div>
+                <footer class="container-modal footer-modal">
                     <div class="t-border-grey"></div>
-                    <button
-                            class="button-submit-projet"
-                            id="submit-new-projet"
-                            type="submit"
-                            value="Valider"
+                    <button class="btn-modal lien-button" id="lien-button"> Ajouter une photo</button>
+
+                    <a class="supp-galerie" href="#" id="supprimer-projets"
+                    >Supprimer la galerie</a
                     >
-                        Valider
-                    </button>
-                </form>
+                </footer>
             </div>
-            <footer class="container-modal footer-modal"></footer>
+            <div id="etape-modal-2">
+                <div class="container-modal header-modal">
+                    <a href="#id01"><i class="fa-thin fa-arrow-left"></i></a>
+                    <a href="#" class="closebtn">x</a>
+                </div>
+                <h3 class="titre-modal-2">Ajouter une photo</h3>
+                <div class="container-modal-2">
+                    <form
+                            enctype="multipart/form-data"
+                            id="add-projet"
+                            class="form-add-projet"
+                            action="http://localhost:5678/api/works"
+                    >
+                        <div class="upload-image">
+                            <label for="image" class="input-upload-image"
+                            >+ Ajouter photo
+                            </label>
+                            <img
+                                    class="image-preview-load"
+                                    src=""
+                                    alt=""
+                                    id="imageUpload"
+
+
+                            />
+                            <input
+                                    class=""
+                                    accept="image/*"
+                                    type="file"
+                                    name="image"
+                                    id="image"
+                                    onchange="previewPicture(event)"
+                                    required="required"
+                            />
+                            <p id="p-format-accept">jpg, png: 4mo max</p>
+                        </div>
+                        <label for="titre">Titre</label>
+                        <input
+                                class="form-add-champ shadow-box"
+                                type="text"
+                                name="title"
+                                id="titre"
+                                required="required"
+                                onchange="activeTitleLoad(event)"
+                        />
+                        <label for="categorie-select">Catégorie</label>
+                        <select
+                                class="form-add-champ shadow-box"
+                                type="select"
+                                name="category"
+                                id="categorie-select"
+                                onchange="activeCategoryLoad(event)"
+                        >
+                            <option value=""></option>
+                        </select>
+                        <div class="t-border-grey"></div>
+                        <button
+                                class="button-submit-projet"
+                                id="submit-new-projet"
+                                type="submit"
+                                value="Valider"
+                        >
+                            Valider
+                        </button>
+                    </form>
+            </div>
+        </div>
         </div>
     </div>
 </div>
+
+
 </body>
 </html>
 <script type="module" src="./assets/js/api.js"></script>
 
 <script src="./assets/js/work.js"></script>
-<script src="./assets/js/postProjet.js"></script>
+<script type="module" src="./assets/js/postProjet.js"></script>
 <script src="./assets/js/previewPicture.js"></script>
+<script src="./assets/js/modal.js"></script>

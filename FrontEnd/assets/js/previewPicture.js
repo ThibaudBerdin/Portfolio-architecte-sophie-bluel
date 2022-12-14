@@ -3,6 +3,12 @@ let imgLoad = false;
 let titleLoad = false;
 let categoryLoad = false;
 
+function resetWorkForm() {
+  imgLoad = false;
+  titleLoad = false;
+  categoryLoad = false;
+}
+
 //Gestion de la récupération et de l'affichage de l'image en preview
 let imageUpload = document.querySelector("#imageUpload");
 const reader = new FileReader();
@@ -72,11 +78,11 @@ function activeCategoryLoad(e) {
 
 function loadNewImage() {
   const imageLoad = document.querySelector(".upload-image");
-  imageLoad.onclick = () => {
-    console.log("Reload Image");
-    window.location.reload();
-  };
-
+  imageLoad.addEventListener("click", reloadImage);
 
   //document.querySelector("#image").addEventListener("click", ());
+}
+
+function reloadImage() {
+  window.location.reload();
 }
