@@ -30,7 +30,9 @@ function postNewProjet(event) {
         document
           .querySelector(".input-upload-image")
           .setAttribute("style", "display:");
-
+        document
+          .querySelector("#icon-form-upload")
+          .setAttribute("style", "display:");
         return response.json();
         //location.href =        "http://localhost:63342/Portfolio-architecte-sophie-bluel/FrontEnd/index.html#id01";
       }

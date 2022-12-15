@@ -37,6 +37,9 @@ function handleEvent(event) {
     .querySelector("#p-format-accept")
     .setAttribute("style", "display:none");
 
+  document
+    .querySelector("#icon-form-upload")
+    .setAttribute("style", "display:none");
   imageUpload.src = reader.result;
   imgLoad = true;
   activeButton();

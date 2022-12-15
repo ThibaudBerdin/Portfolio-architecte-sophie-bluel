@@ -126,7 +126,7 @@ header {
     position: absolute;
     z-index: 1;
     top: 3%;
-    left: 70%;
+    left: 68%;
     border-radius: 5px;
     width: 35px;
     background: black;
@@ -212,4 +212,5 @@ header {
     width: 65%;
     height: auto;
     object-fit: contain;
+    max-height: 500px;
 }
