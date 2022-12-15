@@ -24,8 +24,6 @@ function postNewProjet(event) {
       if (response.ok) {
         form.reset();
 
-        const imageLoad = document.querySelector(".upload-image");
-
         document.querySelector("#imageUpload").setAttribute("src", "");
         document
           .querySelector(".input-upload-image")
@@ -34,7 +32,6 @@ function postNewProjet(event) {
           .querySelector("#icon-form-upload")
           .setAttribute("style", "display:");
         return response.json();
-        //location.href =        "http://localhost:63342/Portfolio-architecte-sophie-bluel/FrontEnd/index.html#id01";
       }
     })
     .then((responseJson) => {

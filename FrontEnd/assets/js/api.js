@@ -18,6 +18,7 @@ let tableauProjets = fetch(lienAPI + "works")
     for (const projet of value) {
       let figure = document.createElement("figure");
       figure.setAttribute("id", "accueil-projet-" + projet.id);
+      figure.setAttribute("class", "figure-work");
       let figcaption = document.createElement("figcaption");
       figcaption.innerText = projet.title;
       let img = document.createElement("img");
@@ -145,7 +146,12 @@ if (localStorage.getItem("token")) {
   entete.appendChild(divEt);
 
   const divEditLien = document.querySelector("#projets-edit-lien");
-  divEditLien.innerHTML += `<a class="t-a-td" href="#id01"><i class="fa-light fa-pen-to-square"></i> modifier</a>`;
+  divEditLien.innerHTML += `<a class="t-a-td" href="#id01" id="btn-open-modif-modal"><i class="fa-light fa-pen-to-square"></i> modifier</a>`;
+  document
+    .querySelector("#btn-open-modif-modal")
+    .addEventListener("click", (e) => {
+      openModal1();
+    });
 
   const grpBtnFlt = document.querySelector(".grp-btn-filter");
   grpBtnFlt.style.visibility = "hidden";
@@ -236,7 +242,7 @@ fetch("http://localhost:5678/api/categories", {
  *
  */
 function filterProjets(e) {
-  const projets = document.querySelectorAll("figure");
+  const projets = document.querySelectorAll(".figure-work");
 
   for (const projet of projets) {
     if (e.srcElement.getAttribute("id") !== "all") {
@@ -254,87 +260,3 @@ function filterProjets(e) {
 
   return "OK";
 }
-
-/**
- * CHARGEMENT MODALE 2
-
-
-const btnModal2 = document.querySelector('#btn-to-modal-2')
-
-btnModal2.addEventListener('click',loadModal2 )
-
-function loadModal2(){
-  const modalDiv = document.querySelector('#id01')
-  modalDiv.innerHTML = `     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="container-modal header-modal">
-                <a href="#id01"><i class="fa-thin fa-arrow-left"></i></a>
-                <a href="#" class="closebtn">x</a>
-            </div>
-            <h3 class="titre-modal-2">Ajouter une photo</h3>
-            <div class="container-modal-2">
-                <form
-                        enctype="multipart/form-data"
-                        id="add-projet"
-                        class="form-add-projet"
-                        action="http://localhost:5678/api/works"
-                >
-                    <div class="upload-image">
-                        <label for="image" class="input-upload-image"
-                        >+ Ajouter photo
-                        </label>
-                        <img
-                                class="image-preview-load"
-                                src=""
-                                alt=""
-                                id="imageUpload"
-
-
-                        />
-                        <input
-                                class=""
-                                accept="image/*"
-                                type="file"
-                                name="image"
-                                id="image"
-                                onchange="previewPicture(event)"
-                                required="required"
-                        />
-                        <p id="p-format-accept">jpg, png: 4mo max</p>
-                    </div>
-                    <label for="titre">Titre</label>
-                    <input
-                            class="form-add-champ shadow-box"
-                            type="text"
-                            name="title"
-                            id="titre"
-                            required="required"
-                            onchange="activeTitleLoad(event)"
-                    />
-                    <label for="categorie-select">Catégorie</label>
-                    <select
-                            class="form-add-champ shadow-box"
-                            type="select"
-                            name="category"
-                            id="categorie-select"
-                            onchange="activeCategoryLoad(event)"
-                    >
-                        <option value=""></option>
-                    </select>
-                    <div class="t-border-grey"></div>
-                    <button
-                            class="button-submit-projet"
-                            id="submit-new-projet"
-                            type="submit"
-                            value="Valider"
-                    >
-                        Valider
-                    </button>
-                </form>
-            </div>
-            <footer class="container-modal footer-modal"></footer>
-        </div>
-    </div>`
-}
-
- */

@@ -21,3 +21,27 @@ function afficherModal01() {
   modal02.setAttribute("style", "display:none");
   modal01.setAttribute("style", "display:''");
 }
+
+document.querySelectorAll(".closebtn").forEach((item) => {
+  item.addEventListener("click", (e) => {
+    e.preventDefault();
+    closeModal();
+  });
+});
+
+document.addEventListener("click", (e) => {
+  if (!e.target.closest("#etape-modal-1")) {
+    console.log("fermeture modal");
+    // closeModal();
+  }
+});
+
+function closeModal() {
+  modalGlobal.style.display = "none";
+}
+
+function openModal1() {
+  modalGlobal.style.display = "";
+  modal01.style.display = "";
+  modal02.style.display = "none";
+}
