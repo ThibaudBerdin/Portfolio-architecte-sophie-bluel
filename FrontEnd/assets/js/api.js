@@ -146,7 +146,12 @@ if (localStorage.getItem("token")) {
   entete.appendChild(divEt);
 
   const divEditLien = document.querySelector("#projets-edit-lien");
-  divEditLien.innerHTML += `<a class="t-a-td" href="#id01" id="btn-open-modif-modal"><i class="fa-light fa-pen-to-square"></i> modifier</a>`;
+  divEditLien.innerHTML += `<a class="t-a-td" href="" id="btn-open-modif-modal"><i class="fa-light fa-pen-to-square"></i> modifier</a>`;
+  divEditLien.addEventListener("click", (e) => {
+    e.preventDefault();
+    openModal1();
+  });
+
   document
     .querySelector("#btn-open-modif-modal")
     .addEventListener("click", (e) => {

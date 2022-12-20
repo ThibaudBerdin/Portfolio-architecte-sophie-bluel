@@ -2,8 +2,9 @@ const modal01 = document.querySelector("#etape-modal-1");
 const modal02 = document.querySelector("#etape-modal-2");
 const btnModal01 = document.querySelector("#lien-button");
 const backModal = document.querySelector(".fa-thin");
+let stateModal = false;
 
-const modalGlobal = document.querySelector("#id01");
+const modalGlobal = document.querySelector(".modalGlobal");
 
 modal02.setAttribute("style", "display:none");
 
@@ -29,19 +30,32 @@ document.querySelectorAll(".closebtn").forEach((item) => {
   });
 });
 
+/**
+ * FERMETURE DE LA MODAL EN CAS DE CLIC EXTERIEUR
+ */
+
 document.addEventListener("click", (e) => {
-  if (!e.target.closest("#etape-modal-1")) {
+  if (
+    !e.target.closest("#etape-modal-1") &&
+    !e.target.closest("#etape-modal-2") &&
+    e.target.getAttribute("id") !== "btn-open-modif-modal" &&
+    stateModal === true
+  ) {
     console.log("fermeture modal");
-    // closeModal();
+    closeModal();
   }
 });
 
 function closeModal() {
+  stateModal = false;
   modalGlobal.style.display = "none";
+  //modalGlobal.visibility = "none";
 }
 
 function openModal1() {
-  modalGlobal.style.display = "";
+  stateModal = true;
+  modalGlobal.style.display = "table";
+  modalGlobal.style.position = "absolute";
   modal01.style.display = "";
   modal02.style.display = "none";
 }
