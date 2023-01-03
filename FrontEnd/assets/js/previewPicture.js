@@ -82,8 +82,6 @@ function activeCategoryLoad(e) {
 function loadNewImage() {
   const imageLoad = document.querySelector(".upload-image");
   imageLoad.addEventListener("click", reloadImage);
-
-  //document.querySelector("#image").addEventListener("click", ());
 }
 
 function reloadImage() {

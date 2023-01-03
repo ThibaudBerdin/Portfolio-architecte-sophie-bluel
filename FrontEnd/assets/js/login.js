@@ -1,26 +1,6 @@
 const loginForm = document.querySelector("#login-form");
 loginForm.addEventListener("submit", submitLoginForm);
 
-/**
- async function submitLoginForm(event){
-    event.preventDefault()
-    const form = event.currentTarget
-    const formData = new FormData(form)
-    const plainFormData = Object.fromEntries(formData.entries());
-    const formDataJsonString = JSON.stringify(plainFormData);
-
-    const r = await fetch(form.action, {
-        method: 'POST',
-        body:  formDataJsonString
-    })
-
-    if (r.ok) {
-        return r.json()
-    }
-    throw new Error('Impossible de contacter le serveur')
-}
- */
-
 function submitLoginForm(event) {
   event.preventDefault();
   const form = event.currentTarget;
@@ -28,11 +8,6 @@ function submitLoginForm(event) {
   const url = form.action;
   const formData = new FormData(form);
 
-  /**
-  for (const item of formData.values()) {
-    console.log(item);
-  }
-   */
   const plainFormData = Object.fromEntries(formData.entries());
   const formDataJsonString = JSON.stringify(plainFormData);
 
@@ -55,7 +30,7 @@ function submitLoginForm(event) {
       localStorage.setItem("token", rJson.token);
       if (rJson.token) {
         location.href =
-          "http://localhost:63342/Portfolio-architecte-sophie-bluel/FrontEnd/index.html";
+          "http://localhost:63343/Portfolio-architecte-sophie-bluel/FrontEnd/index.html";
       }
     })
     .catch((error) => {

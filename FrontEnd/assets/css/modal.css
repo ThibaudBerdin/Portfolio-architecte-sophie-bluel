@@ -26,12 +26,6 @@ header {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* Afficher la fenêtre modale lorsqu'elle est ciblée par un lien
-.modal:target {
-    display: table;
-    position: absolute;
-}
-*/
 
 
 /* la fenêtre modale  */
