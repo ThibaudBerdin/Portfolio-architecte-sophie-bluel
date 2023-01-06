@@ -41,7 +41,6 @@ document.addEventListener("click", (e) => {
     e.target.getAttribute("id") !== "btn-open-modif-modal" &&
     stateModal === true
   ) {
-    console.log("fermeture modal");
     closeModal();
   }
 });
@@ -49,7 +48,6 @@ document.addEventListener("click", (e) => {
 function closeModal() {
   stateModal = false;
   modalGlobal.style.display = "none";
-  //modalGlobal.visibility = "none";
 }
 
 function openModal1() {

@@ -20,17 +20,15 @@ function submitLoginForm(event) {
   })
     .then((response) => {
       if (response.ok) {
-        console.log(response);
-        console.log(typeof response);
         return response.json();
       }
     })
     .then((rJson) => {
-      console.log(rJson);
       localStorage.setItem("token", rJson.token);
       if (rJson.token) {
         location.href =
-          "http://localhost:63343/Portfolio-architecte-sophie-bluel/FrontEnd/index.html";
+          //"http://localhost:63343/Portfolio-architecte-sophie-bluel/FrontEnd/index.html";
+          "index.html";
       }
     })
     .catch((error) => {

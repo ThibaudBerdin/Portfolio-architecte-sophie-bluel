@@ -10,8 +10,6 @@ function postNewProjet(event) {
   const url = form.action;
   const formData = new FormData(form);
 
-  console.log(formData);
-
   fetch(url, {
     method: "POST",
     headers: {
@@ -35,7 +33,6 @@ function postNewProjet(event) {
       }
     })
     .then((responseJson) => {
-      console.log(responseJson);
       createElement(
         "div",
         { class: "t-relative", id: "projet" + responseJson.id },

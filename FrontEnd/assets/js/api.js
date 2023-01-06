@@ -181,7 +181,8 @@ function logout(event) {
   event.preventDefault();
   localStorage.clear();
   location.href =
-    "http://localhost:63342/Portfolio-architecte-sophie-bluel/FrontEnd/index.html";
+    //"http://localhost:63343/Portfolio-architecte-sophie-bluel/FrontEnd/index.html";
+    "index.html";
 }
 
 /**
@@ -265,3 +266,9 @@ function filterProjets(e) {
 
   return "OK";
 }
+
+document.querySelector("#titre").addEventListener("change", activeTitleLoad);
+
+document
+  .querySelector("#categorie-select")
+  .addEventListener("change", activeCategoryLoad);

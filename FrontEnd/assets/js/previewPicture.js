@@ -14,7 +14,6 @@ let imageUpload = document.querySelector("#imageUpload");
 const reader = new FileReader();
 
 function previewPicture(e) {
-  console.log("-----Preview Picture-----");
   const input = e.target;
   const inputFile = input.files[0];
 
