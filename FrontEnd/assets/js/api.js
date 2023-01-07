@@ -272,3 +272,5 @@ document.querySelector("#titre").addEventListener("change", activeTitleLoad);
 document
   .querySelector("#categorie-select")
   .addEventListener("change", activeCategoryLoad);
+
+document.querySelector("#image").addEventListener("change", previewPicture);
